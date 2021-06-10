@@ -1,0 +1,72 @@
+@hostname = localhost
+@port = 5443
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@aUserId = 60c1330f05dafc2b93baf4a3
+@aSiteId = 60c1330f05dafc2b93baf4a4
+@aUserToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzMwZjA1ZGFmYzJiOTNiYWY0YTMiLCJpYXQiOjE2MjMyNzU2NDksImV4cCI6MTYyMzI3OTI0OX0.Esst2o7yteG_yK_Li41m27V0Qgw8Po1I7VTljRO3hqQ
+@bUserToken = bearer
+@adminId = 60a41d2c4a25f725864629e5
+@adminToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGE0MWQyYzRhMjVmNzI1ODY0NjI5ZTUiLCJpYXQiOjE2MjMxMDY2MzQsImV4cCI6MTYyMzExMDIzNH0.JRBYhgSuvLjH6QLW1MQKh4FuEYv8b1AFXSSULdL1M7Q
+
+### GET ALL USER
+GET https://{{host}}/api/users
+Authorization: {{adminToken}}
+
+### USER LOGGIN
+POST https://{{host}}/api/users/login
+Content-Type: {{contentType}}
+
+{
+    "username": "fmpipe8",
+    "password": "password"
+}
+
+### GET SITE BY ID
+GET https://{{host}}/api/sites/{{aSiteId}}
+Authorization: {{aUserToken}}
+
+### PUT SITE BY ID
+PUT https://{{host}}/api/sites/{{aSiteId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+{
+  "phone": "55555555"
+}
+
+### POST SITE
+POST https://{{host}}/api/sites
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+{
+  "owner": "{{aUserId}}",  
+  "name": "New Resto",
+  "siteAddress": {
+    "address": "Rivadavia 12400",
+    "city": "Ramos Mejia",
+    "postalCode": "1704",
+    "country": "Argentina"
+  },
+  "phone": "55555555",
+  "email": "info@newresto.com.ar",
+  "image": "",
+  "owner": "609eeb8dcaaef933bd5c2538"
+}
+
+### GET ITEM
+GET https://{{host}}/api/items
+Authorization: {{adminToken}}
+
+### POST ITEM
+POST https://{{host}}/api/items
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+  {
+    "name": "Coffe Black",
+    "description": "Coffe very strong",
+    "image": "",
+    "price": "2"
+  }

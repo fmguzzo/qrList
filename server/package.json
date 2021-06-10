@@ -1,0 +1,38 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start_db": "sudo systemctl start mongod",
+    "stop_db": "sudo systemctl stop mongod",
+    "client": "cd .. && cd client && yarn start",
+    "server": "nodemon ./bin/www --exec babel-node",
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "build_Client": "cd .. && cd client && rm -rf build/ && yarn build",
+    "build_server": "rm -rf server_build/ && babel ../server --out-dir server_build --ignore node_modules,public",
+    "production": "node ./server_build/bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^9.0.2",
+    "express": "~4.16.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.8",
+    "mongoose-currency": "^0.2.0",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-facebook-token": "^4.0.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.2",
+    "@babel/node": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "concurrently": "^6.1.0"
+  }
+}

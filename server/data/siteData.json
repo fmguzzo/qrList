@@ -1,0 +1,13 @@
+{
+  "name": "New Resto",
+  "siteAddress": {
+    "address": "Rivadavia 12400",
+    "city": "Ramos Mejia",
+    "postalCode": "1704",
+    "country": "Argentina"
+  },
+  "phone": "55555555",
+  "email": "info@newresto.com.ar",
+  "image": "",
+  "owner": "609eeb8dcaaef933bd5c2538"
+}
