@@ -3,10 +3,10 @@ import {
   SITE_DETAILS_FAIL,
   SITE_DETAILS_REQUEST,
   SITE_DETAILS_SUCCESS,
+  SITE_DETAILS_RESET,
   SITE_UPDATE_PROFILE_FAIL,
   SITE_UPDATE_PROFILE_REQUEST,
   SITE_UPDATE_PROFILE_SUCCESS,
-  SITE_UPDATE_PROFILE_RESET,
 } from "../constants/siteConstants";
 
 export const getSiteDetails = () => async (dispatch, getState) => {
@@ -69,6 +69,10 @@ export const updateSiteProfile = (site) => async (dispatch, getState) => {
       type: SITE_UPDATE_PROFILE_SUCCESS,
       payload: data,
     });
+
+    /*dispatch({
+      type: SITE_DETAILS_RESET,
+    });*/
   } catch (error) {
     const message =
       error.response && error.response.data.message

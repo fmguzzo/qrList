@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 
 import { getSiteDetails, updateSiteProfile } from "../actions/siteActions";
+import { SITE_UPDATE_PROFILE_RESET } from "../constants/siteConstants";
 
 const ProfileScreen = ({ history }) => {
   const [business, setBusiness] = useState("");
@@ -15,7 +16,7 @@ const ProfileScreen = ({ history }) => {
   const [postalCode, setPostalCode] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState(null);
+  //const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -32,7 +33,8 @@ const ProfileScreen = ({ history }) => {
     if (!userInfo) {
       history.push("/login");
     } else {
-      if (!site) {
+      if (!site.siteAddress || success) {
+        dispatch({ type: SITE_UPDATE_PROFILE_RESET });
         dispatch(getSiteDetails());
       } else {
         setBusiness(site.business);
@@ -43,7 +45,7 @@ const ProfileScreen = ({ history }) => {
         setEmail(site.email);
       }
     }
-  }, [dispatch, history, userInfo, site]);
+  }, [dispatch, history, userInfo, site, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -60,10 +62,8 @@ const ProfileScreen = ({ history }) => {
   return (
     <FormContainer>
       <Row>
-        <Col md={4}>
+        <Col md={10}>
           <h2>User Profile</h2>
-          {message && <Message variant="danger">{message}</Message>}
-          {}
           {success && <Message variant="success">Profile Updated</Message>}
           {loading ? (
             <Loader />

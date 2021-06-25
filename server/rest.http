@@ -4,7 +4,8 @@
 @contentType = application/json
 @aUserId = 60c1330f05dafc2b93baf4a3
 @aSiteId = 60c1330f05dafc2b93baf4a4
-@aUserToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzMwZjA1ZGFmYzJiOTNiYWY0YTMiLCJpYXQiOjE2MjMyNzU2NDksImV4cCI6MTYyMzI3OTI0OX0.Esst2o7yteG_yK_Li41m27V0Qgw8Po1I7VTljRO3hqQ
+@aListId = 60d0d9c097364f706238680e
+@aUserToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzMwZjA1ZGFmYzJiOTNiYWY0YTMiLCJpYXQiOjE2MjQ0NzA2OTIsImV4cCI6MTYyNDQ3NDI5Mn0.FdG68gjwTPLvWt16jLaKbeptkBx_1Zk-_vYB0zoTC9A
 @bUserToken = bearer
 @adminId = 60a41d2c4a25f725864629e5
 @adminToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGE0MWQyYzRhMjVmNzI1ODY0NjI5ZTUiLCJpYXQiOjE2MjMxMDY2MzQsImV4cCI6MTYyMzExMDIzNH0.JRBYhgSuvLjH6QLW1MQKh4FuEYv8b1AFXSSULdL1M7Q
@@ -20,6 +21,38 @@ Content-Type: {{contentType}}
 {
     "username": "fmpipe8",
     "password": "password"
+}
+
+### GET ALL LIST BY SITE
+GET https://{{host}}/api/lists/{{aSiteId}}/site
+Authorization: {{aUserToken}}
+
+### GET LIST BY ID
+GET https://{{host}}/api/lists/{{aListId}}
+Authorization: {{aUserToken}}
+
+### POST CREATE LIST
+POST https://{{host}}/api/lists/{{aSiteId}}/site
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+{
+  "name": "List 6",
+   "desc": "Description 6"
+}
+
+### DELETE LIST BY ID
+DELETE https://{{host}}/api/lists/{{aListId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+### UPDATE LIST BY ID
+PUT https://{{host}}/api/lists/{{aListId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+{ 
+  "desc": "desc updated now"
 }
 
 ### GET SITE BY ID

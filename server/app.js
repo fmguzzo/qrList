@@ -9,7 +9,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/userRoutes");
 import sitesRouter from "./routes/siteRoutes";
 import itemsRouter from "./routes/itemRoutes";
-import ordersRouter from "./routes/orderRoutes";
+import listsRouter from "./routes/listRoutes";
 
 import { notFound, errorHandler } from "./middleware/errorMiddleware";
 import connectDB from "./db";
@@ -47,6 +47,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/sites", sitesRouter);
+app.use("/api/lists", listsRouter);
 app.use("/api/items", itemsRouter);
 //app.use("/api/orders", ordersRouter);
 

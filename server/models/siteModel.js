@@ -21,7 +21,6 @@ const siteSchema = new Schema(
     email: { type: String, default: "" },
     image: { type: String, default: "" },
     shipCost: { type: Currency, default: 0 },
-    lists: [{ type: Schema.Types.ObjectId, ref: "List" }],
   },
   {
     timestamps: true,

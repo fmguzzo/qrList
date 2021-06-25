@@ -3,14 +3,15 @@ const Schema = mongoose.Schema;
 
 const listSchema = new Schema(
   {
+    idSite: { type: Schema.Types.ObjectId, ref: "Site", required: true },
     name: { type: String, required: true },
     desc: { type: String },
-    sections: [{ type: Schema.Types.ObjectId, ref: "Section" }],
+    active: { type: Boolean, default: false },
   },
   {
     timestamp: true,
   }
 );
 
-const List = mongoose.models("List", listSchema);
+const List = mongoose.model("List", listSchema);
 export default List;

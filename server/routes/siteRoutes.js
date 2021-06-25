@@ -18,7 +18,7 @@ siteRouter
   .route("/")
   .options(cors.corsWithOptions, corsSites)
   .get(cors.corsWithOptions, auth.verifyUser, auth.verifyAdmin, getSites)
-  .post(cors.corsWithOptions, auth.verifyUser, createSite)
+  .post(cors.corsWithOptions, auth.verifyUser, auth.verifyAdmin, createSite)
   .delete(cors.corsWithOptions, auth.verifyUser, auth.verifyAdmin, deleteSites);
 
 siteRouter
