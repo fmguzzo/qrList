@@ -10,6 +10,7 @@ import {
   listListReducer,
   listUpdateReducer,
   listDetailsReducer,
+  listCreateReducer,
 } from "./reducers/listReducers";
 
 const reducer = combineReducers({
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   listDelete: listDeleteReducer,
   listDetails: listDetailsReducer,
   listUpdate: listUpdateReducer,
+  listCreate: listCreateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

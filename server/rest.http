@@ -5,7 +5,7 @@
 @aUserId = 60c1330f05dafc2b93baf4a3
 @aSiteId = 60c1330f05dafc2b93baf4a4
 @aListId = 60d0d9c097364f706238680e
-@aUserToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzMwZjA1ZGFmYzJiOTNiYWY0YTMiLCJpYXQiOjE2MjQ0NzA2OTIsImV4cCI6MTYyNDQ3NDI5Mn0.FdG68gjwTPLvWt16jLaKbeptkBx_1Zk-_vYB0zoTC9A
+@aUserToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzMwZjA1ZGFmYzJiOTNiYWY0YTMiLCJpYXQiOjE2MjQ2NjAxODEsImV4cCI6MTYyNDY2Mzc4MX0.gnvSuWSPqELatQWf0_DLnivzl8s9PJ3s3qYHl5gWzl0
 @bUserToken = bearer
 @adminId = 60a41d2c4a25f725864629e5
 @adminToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGE0MWQyYzRhMjVmNzI1ODY0NjI5ZTUiLCJpYXQiOjE2MjMxMDY2MzQsImV4cCI6MTYyMzExMDIzNH0.JRBYhgSuvLjH6QLW1MQKh4FuEYv8b1AFXSSULdL1M7Q
@@ -37,8 +37,8 @@ Content-Type: {{contentType}}
 Authorization: {{aUserToken}}
 
 {
-  "name": "List 6",
-   "desc": "Description 6"
+  "name": "List 8",
+   "desc": "Description 8"
 }
 
 ### DELETE LIST BY ID

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { logout } from "../actions/userActions";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ const Header = () => {
           <LinkContainer to="/">
             <Navbar.Brand>QRList</Navbar.Brand>
           </LinkContainer>
+          <Link to="/lists" className="btn btn-light my-3">
+            Lists
+          </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">

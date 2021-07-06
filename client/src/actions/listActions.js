@@ -114,7 +114,11 @@ export const updateListDetails =
         },
       };
 
-      const { data } = axios.put(`/api/lists/${listId}`, updatedList, config);
+      const { data } = await axios.put(
+        `/api/lists/${listId}`,
+        updatedList,
+        config
+      );
 
       dispatch({
         type: actionTypes.LIST_UPDATE_SUCCESS,
@@ -127,6 +131,46 @@ export const updateListDetails =
           : error.message;
       dispatch({
         type: actionTypes.LIST_UPDATE_FAIL,
+        payload: message,
+      });
+    }
+  };
+
+export const createListDetails =
+  (createdList) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: actionTypes.LIST_CREATE_REQUEST,
+      });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.post(
+        `/api/lists/${userInfo.idSite}/site`,
+        createdList,
+        config
+      );
+
+      dispatch({
+        type: actionTypes.LIST_CREATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({
+        type: actionTypes.LIST_CREATE_FAIL,
         payload: message,
       });
     }

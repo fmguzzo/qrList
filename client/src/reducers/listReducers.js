@@ -62,3 +62,22 @@ export const listUpdateReducer = (state = {}, { type, payload }) => {
       return state;
   }
 };
+
+export const listCreateReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case actionTypes.LIST_CREATE_REQUEST:
+      return { ...state, loading: true };
+
+    case actionTypes.LIST_CREATE_SUCCESS:
+      return { loading: false, success: true, list: payload };
+
+    case actionTypes.LIST_CREATE_FAIL:
+      return { loading: false, success: false, error: payload };
+
+    case actionTypes.LIST_CREATE_RESET:
+      return {};
+
+    default:
+      return state;
+  }
+};
