@@ -4,11 +4,14 @@
 @contentType = application/json
 @aUserId = 60c1330f05dafc2b93baf4a3
 @aSiteId = 60c1330f05dafc2b93baf4a4
-@aListId = 60d0d9c097364f706238680e
-@aUserToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzMwZjA1ZGFmYzJiOTNiYWY0YTMiLCJpYXQiOjE2MjQ2NjAxODEsImV4cCI6MTYyNDY2Mzc4MX0.gnvSuWSPqELatQWf0_DLnivzl8s9PJ3s3qYHl5gWzl0
+@aListId = 60d719102a3b2e1498305949
+@aCategoryId = 60e7627f08d06b3aa0b3d2dc
+@aItemId = 60f717cb3af7103b24df5c8a
+@aUserToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzMwZjA1ZGFmYzJiOTNiYWY0YTMiLCJpYXQiOjE2Mjc5MzQ3MTQsImV4cCI6MTYyNzkzODMxNH0.fc24H1Y-kew2ikgOXCoPOElnNZoywwjb0Z5DzAnJJA8
+
 @bUserToken = bearer
 @adminId = 60a41d2c4a25f725864629e5
-@adminToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGE0MWQyYzRhMjVmNzI1ODY0NjI5ZTUiLCJpYXQiOjE2MjMxMDY2MzQsImV4cCI6MTYyMzExMDIzNH0.JRBYhgSuvLjH6QLW1MQKh4FuEYv8b1AFXSSULdL1M7Q
+@adminToken = bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMxMzMwZjA1ZGFmYzJiOTNiYWY0YTMiLCJpYXQiOjE2MjU3NzU1ODMsImV4cCI6MTYyNTc3OTE4M30.A68plcQDIGPnoOtucGLDszp_m5HF414HIEpPH9zr_SY
 
 ### GET ALL USER
 GET https://{{host}}/api/users
@@ -55,6 +58,78 @@ Authorization: {{aUserToken}}
   "desc": "desc updated now"
 }
 
+### GET ALL CATEGORIES BY LIST ok
+GET https://{{host}}/api/categories/list/{{aListId}}
+Authorization: {{aUserToken}}
+
+### GET CATEGORY BY ID ok
+GET https://{{host}}/api/categories/{{aCategoryId}}
+Authorization: {{aUserToken}}
+
+### POST CREATE CATEGORY ok
+POST https://{{host}}/api/categories/list/{{aListId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+{
+  "name": "Category 6",
+  "desc": "Description 6"
+}
+
+### DELETE CATEGORY BY ID ok
+DELETE https://{{host}}/api/categories/{{aCategoryId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+### DELETE ALL CATEGORY BY LIST ok
+DELETE https://{{host}}/api/categories/list/{{aListId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+### UPDATE CATEGORY BY ID
+PUT https://{{host}}/api/categories/{{aCategoryId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+{ 
+  "name": "Category 1",
+  "desc": "Description 1"
+}
+
+### GET ITEMS BY CATEGORY
+GET https://{{host}}/api/items/category/{{aCategoryId}}?page=1&items=3
+Authorization: {{aUserToken}}
+
+### POST CREATE ITEM BY CATEGORY
+POST https://{{host}}/api/items/category/{{aCategoryId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+{
+  "name": "Item 10",
+  "desc": "Desc 10",
+  "price": 15
+}
+
+### GET ITEM BY ID
+GET https://{{host}}/api/items/{{aItemId}}
+Authorization: {{aUserToken}}
+
+### DELETE ITEM BY ID 
+DELETE https://{{host}}/api/items/{{aItemId}}?category={{aCategoryId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+### UPDATE ITEM BY ID
+PUT https://{{host}}/api/items/{{aItemId}}
+Content-Type: {{contentType}}
+Authorization: {{aUserToken}}
+
+{
+  "name": "Item 11",
+  "desc": "desc 11"
+}
+
 ### GET SITE BY ID
 GET https://{{host}}/api/sites/{{aSiteId}}
 Authorization: {{aUserToken}}
@@ -88,18 +163,3 @@ Authorization: {{aUserToken}}
   "owner": "609eeb8dcaaef933bd5c2538"
 }
 
-### GET ITEM
-GET https://{{host}}/api/items
-Authorization: {{adminToken}}
-
-### POST ITEM
-POST https://{{host}}/api/items
-Content-Type: {{contentType}}
-Authorization: {{aUserToken}}
-
-  {
-    "name": "Coffe Black",
-    "description": "Coffe very strong",
-    "image": "",
-    "price": "2"
-  }

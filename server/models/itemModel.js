@@ -16,5 +16,15 @@ const itemSchema = new Schema(
   }
 );
 
+itemSchema.pre("findOneAndRemove", function (next) {
+  //removing dependent documents
+  console.log("Item pre-findOneAndRemove");
+  next();
+});
+
+itemSchema.post("findOneAndRemove", function (doc) {
+  console.log(`Item ${doc._id} post-findOneAndRemove`);
+});
+
 const Item = mongoose.model("Item", itemSchema);
 export default Item;

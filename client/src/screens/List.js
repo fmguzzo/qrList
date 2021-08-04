@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 const List = ({ _id, name, desc, active, handleRemoveList }) => {
   const history = useHistory();
   return (
-    <Card style={{ width: "12rem" }} className="list">
+    <Card style={{ width: "15rem" }} className="list">
       <Card.Body>
         <Card.Title className="list-title">{_id}</Card.Title>
         <div className="list-details">
@@ -21,6 +21,12 @@ const List = ({ _id, name, desc, active, handleRemoveList }) => {
         </Button>{" "}
         <Button variant="danger" onClick={() => handleRemoveList(_id)}>
           Delete
+        </Button>{" "}
+        <Button
+          variant="warning"
+          onClick={() => history.push(`/lists/${_id}/category`)}
+        >
+          Category
         </Button>
       </Card.Body>
     </Card>

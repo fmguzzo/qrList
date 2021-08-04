@@ -53,17 +53,23 @@ const ListsListScreen = ({ history }) => {
           </Button>
         </Col>
       </Row>
-      {loadingDelete && <Loader />}
-      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        lists.map((list) => (
-          <List key={list._id} {...list} handleRemoveList={handleRemoveList} />
-        ))
-      )}
+      <Row>
+        {loadingDelete && <Loader />}
+        {errorDelete && <Message variant="danger">{errorDelete}</Message>}
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : (
+          lists.map((list) => (
+            <List
+              key={list._id}
+              {...list}
+              handleRemoveList={handleRemoveList}
+            />
+          ))
+        )}
+      </Row>
     </FormContainer>
   );
 };

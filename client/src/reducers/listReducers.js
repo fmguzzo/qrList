@@ -1,3 +1,8 @@
+/**
+ * LIST - 1 REDUCER POR CADA ACCION DE CRUD
+ *      - LOADING = BOOLEAN
+ */
+
 import * as actionTypes from "../constants/listConstants";
 
 export const listListReducer = (state = { lists: [] }, action) => {

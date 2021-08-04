@@ -13,6 +13,9 @@ import {
   listCreateReducer,
 } from "./reducers/listReducers";
 
+import { categoryReducer } from "./reducers/categoryReducers";
+import itemReducer from "./reducers/itemReducers";
+
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
@@ -23,6 +26,8 @@ const reducer = combineReducers({
   listDetails: listDetailsReducer,
   listUpdate: listUpdateReducer,
   listCreate: listCreateReducer,
+  category: categoryReducer,
+  item: itemReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

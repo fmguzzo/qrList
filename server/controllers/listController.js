@@ -45,7 +45,7 @@ const createListBySite = async (req, res, next) => {
       res.json({ list });
     } else {
       res.status(404);
-      throw new Error("List exist with the same name");
+      throw new Error("List can not be created");
     }
   } catch (error) {
     next(error);

@@ -5,25 +5,24 @@ import auth from "../middleware/authMiddleware";
 import cors from "../middleware/corsMiddleware";
 
 import {
-  corsItems,
-  getItems,
-  createItem,
-  deleteItems,
+  getItemsByCategory,
+  createItemByCategory,
   getItemById,
   updateItemById,
   deleteItemById,
 } from "../controllers/itemController";
 
-itemRouter
-  .route("/")
-  .options(cors.corsWithOptions, corsItems)
-  .get(cors.corsWithOptions, auth.verifyUser, auth.verifyAdmin, getItems)
-  .post(cors.corsWithOptions, auth.verifyUser, createItem)
-  .delete(cors.corsWithOptions, auth.verifyUser, auth.verifyAdmin, deleteItems);
+import corsResponse from "../controllers/corsController";
 
 itemRouter
-  .route("/itemId")
-  .options(cors.corsWithOptions, corsItems)
+  .route("/category/:idCategory")
+  .options(cors.corsWithOptions, corsResponse)
+  .get(cors.corsWithOptions, getItemsByCategory)
+  .post(cors.corsWithOptions, auth.verifyUser, createItemByCategory);
+
+itemRouter
+  .route("/:idItem")
+  .options(cors.corsWithOptions, corsResponse)
   .get(cors.cors, getItemById)
   .put(cors.corsWithOptions, auth.verifyUser, updateItemById)
   .delete(cors.corsWithOptions, auth.verifyUser, deleteItemById);
