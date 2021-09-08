@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import HomeScreen from "./screens/HomeScreen";
 import ListsListScreen from "./screens/ListsListScreen";
 import AddListScreen from "./screens/AddListScreen";
 import EditListScreen from "./screens/EditListScreen";
@@ -19,6 +18,7 @@ import AddCategoryScreen from "./screens/AddCategoryScreen";
 import ListsItemScreen from "./screens/ListsItemScreen";
 import AddItemScreen from "./screens/AddItemScreen";
 import EditItemScreen from "./screens/EditItemScreen";
+import HomeScreen from "./screens/HomeScreen";
 
 const App = () => {
   return (
@@ -27,7 +27,7 @@ const App = () => {
       <main className="py-3">
         <Switch>
           <Route path="/login" component={LoginScreen} exact />
-          <Route path="/" component={ListsListScreen} exact />
+          <Route path="/" component={HomeScreen} exact />
           <Route path="/register" component={RegisterScreen} exact />
           <Route path="/profile" component={ProfileScreen} exact />
           <Route path="/lists" component={ListsListScreen} exact />

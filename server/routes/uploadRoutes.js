@@ -9,14 +9,11 @@ import { uploadController } from "../controllers/uploadController";
 
 import corsResponse from "../controllers/corsController";
 
-uploadRouter
-  .route("/")
-  .options(cors.corsWithOptions, corsResponse)
-  .post(
-    cors.corsWithOptions,
-    auth.verifyUser,
-    uploadMiddleware.single("imageFile"),
-    uploadController
-  );
+uploadRouter.route("/").options(cors.corsWithOptions, corsResponse).post(
+  cors.corsWithOptions,
+  //auth.verifyUser,
+  uploadMiddleware.single("imageFile"),
+  uploadController
+);
 
 export default uploadRouter;

@@ -64,23 +64,27 @@ const CategoryFormScreen = (props) => {
       <div className="main-form">
         {errorMsg && <p className="errorMsg">{errorMsg}</p>}
         <Form onSubmit={handleOnSubmit}>
-          <Form.Group controlId="name">
+          <Form.Group className="control-group" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
+              required
               className="input-control"
               type="text"
               name="name"
+              maxlength="25"
               value={name}
               placeholder="Enter name"
               onChange={handleInputChange}
             />
           </Form.Group>
-          <Form.Group controlId="desc">
+          <Form.Group className="control-group" controlId="desc">
             <Form.Label>Description</Form.Label>
             <Form.Control
+              required
               className="input-control"
               type="text"
               name="desc"
+              maxlength="50"
               value={desc}
               placeholder="Enter description"
               onChange={handleInputChange}

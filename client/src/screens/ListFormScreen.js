@@ -7,11 +7,12 @@ const ListFormScreen = (props) => {
     return {
       name: props.list ? props.list.name : "",
       desc: props.list ? props.list.desc : "",
+      active: props.list ? props.list.active : false,
     };
   });
 
   const [errorMsg, setErrorMsg] = useState("");
-  const { name, desc } = list;
+  const { name, desc, active } = list;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +28,9 @@ const ListFormScreen = (props) => {
       const list = {
         name,
         desc,
+        active,
       };
+      console.log(list);
       props.handleOnSubmit(list);
     } else {
       errorMsg = "Please fill out all the fields.";
@@ -36,7 +39,7 @@ const ListFormScreen = (props) => {
   };
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value, type, checked } = event.target;
     switch (name) {
       case "namexxx":
         if (value === "" || parseInt(value) === +value) {
@@ -49,35 +52,47 @@ const ListFormScreen = (props) => {
       default:
         setList((prevState) => ({
           ...prevState,
-          [name]: value,
+          [name]: type === "checkbox" ? checked : value,
         }));
     }
   };
 
   return (
     <FormContainer>
-      <div className="main-form">
+      <div className="main-form ">
         {errorMsg && <p className="errorMsg">{errorMsg}</p>}
         <Form onSubmit={handleOnSubmit}>
-          <Form.Group controlId="name">
+          <Form.Group className="control-group" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
+              required
               className="input-control"
               type="text"
               name="name"
+              maxlength="25"
               value={name}
               placeholder="Enter name"
               onChange={handleInputChange}
             />
           </Form.Group>
-          <Form.Group controlId="desc">
+          <Form.Group className="control-group" controlId="desc">
             <Form.Label>Description</Form.Label>
             <Form.Control
               className="input-control"
               type="text"
               name="desc"
+              maxlength="50"
               value={desc}
               placeholder="Enter description"
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group className="control-group" controlId="active">
+            <Form.Check
+              type="checkbox"
+              name="active"
+              checked={active}
+              label="Active"
               onChange={handleInputChange}
             />
           </Form.Group>

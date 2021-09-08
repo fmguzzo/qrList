@@ -7,8 +7,8 @@
     "stop_db": "sudo systemctl stop mongod",
     "client": "cd .. && cd client && yarn start",
     "server": "nodemon ./bin/www --exec babel-node",
-    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "build_Client": "cd .. && cd client && rm -rf build/ && yarn build",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "build_client": "cd .. && cd client && rm -rf build/ && yarn build",
     "build_server": "rm -rf server_build/ && babel ../server --out-dir server_build --ignore node_modules,public",
     "production": "node ./server_build/bin/www"
   },

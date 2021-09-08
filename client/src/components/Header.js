@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { logout } from "../actions/userActions";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -22,9 +21,6 @@ const Header = () => {
           <LinkContainer to="/">
             <Navbar.Brand>QRList</Navbar.Brand>
           </LinkContainer>
-          <Link to="/lists" className="btn btn-light my-3">
-            Lists
-          </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
@@ -33,7 +29,7 @@ const Header = () => {
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="/list">
+                  <LinkContainer to="/lists">
                     <NavDropdown.Item>List</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
@@ -51,12 +47,6 @@ const Header = () => {
                 <NavDropdown title="Admin" id="adminmenu">
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/admin/productlist">
-                    <NavDropdown.Item>Products</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/admin/orderlist">
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}

@@ -1,0 +1,45 @@
+.card {
+  margin: 1rem;
+  width: 15rem;
+  background-color: white;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin: 30px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+.card-title {
+  text-align: center;
+  padding: 0.5rem;
+  background-color: rgb(236, 236, 236);
+}
+
+.card-detail {
+  text-align: center;
+}
+
+.card-detail-name {
+  font-weight: 500;
+}
+
+.card-button-crud {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-button-crud button {
+  padding: 0;
+  width: 48%;
+}
+
+.card-button-fetch button {
+  width: 100%;
+}

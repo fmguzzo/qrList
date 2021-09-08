@@ -38,7 +38,7 @@ const RegisterScreen = ({ history }) => {
 
   return (
     <FormContainer>
-      <h1>Sign Up</h1>
+      <h4>Sign Up</h4>
       {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
@@ -103,7 +103,7 @@ const RegisterScreen = ({ history }) => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="primary" block>
           Register
         </Button>
       </Form>

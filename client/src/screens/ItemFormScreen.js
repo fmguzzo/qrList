@@ -28,7 +28,7 @@ const ItemFormScreen = (props) => {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    const values = [name, desc, image, price];
+    const values = [name, desc, price];
     let errorMsg = "";
 
     const allFieldsFilled = values.every((field) => {
@@ -90,7 +90,7 @@ const ItemFormScreen = (props) => {
 
       setItem((prevState) => ({
         ...prevState,
-        image: data.result.path,
+        image: data.result.filename,
       }));
 
       setIsUploading(false);
@@ -105,30 +105,34 @@ const ItemFormScreen = (props) => {
       <div className="main-form">
         {errorMsg && <p className="errorMsg">{errorMsg}</p>}
         <Form onSubmit={handleOnSubmit}>
-          <Form.Group controlId="name">
+          <Form.Group className="control-group" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
+              required
               className="input-control"
               type="text"
               name="name"
+              maxlength="25"
               value={name}
               placeholder="Enter name"
               onChange={handleInputChange}
             />
           </Form.Group>
-          <Form.Group controlId="desc">
+          <Form.Group className="control-group" controlId="desc">
             <Form.Label>Description</Form.Label>
             <Form.Control
+              required
               className="input-control"
               type="text"
               name="desc"
+              maxlength="50"
               value={desc}
               placeholder="Enter description"
               onChange={handleInputChange}
             />
           </Form.Group>
 
-          <Form.Group controlId="image">
+          <Form.Group className="control-group" controlId="image">
             <Form.Label>Image</Form.Label>
             <Form.Control
               className="input-control"
@@ -139,15 +143,17 @@ const ItemFormScreen = (props) => {
             ></Form.Control>
             <Form.File
               id="imageFile"
+              name="imageFile"
               custom
               onChange={handleUploadFile}
             ></Form.File>
             {isUploading && <Loader />}
           </Form.Group>
 
-          <Form.Group controlId="price">
+          <Form.Group className="control-group" controlId="price">
             <Form.Label>Price</Form.Label>
             <Form.Control
+              required
               className="input-control"
               type="number"
               name="price"

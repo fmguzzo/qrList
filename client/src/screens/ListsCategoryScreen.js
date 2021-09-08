@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import FormContainer from "../components/FormContainer";
 import Category from "../screens/Category";
 
 import {
@@ -61,9 +60,9 @@ const ListsCategoryScreen = ({ match, history }) => {
     ));
   }
 
-  return (
-    <FormContainer>
-      <Row>
+  /**
+   * 
+   *       <Row>
         <Col>
           <h1>Categories</h1>
         </Col>
@@ -73,14 +72,32 @@ const ListsCategoryScreen = ({ match, history }) => {
           </Button>
         </Col>
       </Row>
-      <Row>
-        {deleteStatus === "loading" && <Loader />}
-        {deleteStatus === "failed" && (
-          <Message variant="danger">{error}</Message>
-        )}
-        {content}
+   * 
+   * 
+   */
+
+  return (
+    <Container>
+      <Row className="border-bottom pb-3">
+        <Col className="d-flex justify-content-between ">
+          <h3>Category Details</h3>
+          <Button onClick={() => handleNewCategory(listId)}>
+            <i className="fas fa-plus"></i> New Category
+          </Button>
+        </Col>
       </Row>
-    </FormContainer>
+      <Row>
+        <Col className="d-inline-flex justify-content-center">
+          {deleteStatus === "loading" && <Loader />}
+          {deleteStatus === "failed" && (
+            <Message variant="danger">{error}</Message>
+          )}
+        </Col>
+      </Row>
+      <Row>
+        <Col className="list-detail">{content}</Col>
+      </Row>
+    </Container>
   );
 };
 
